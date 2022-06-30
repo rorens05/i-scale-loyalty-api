@@ -1,0 +1,29 @@
+.report-container{
+  background-color: white;
+}
+
+.filter-form, .daterangepicker, .header, .title_bar{
+  display: none !important;
+}
+
+#active_admin_content{
+  border-top: none;
+  clear: both;
+  margin-top: 0px;
+  padding-top: 3em;
+}
+
+.report-table{
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1em;
+  
+}
+
+.report-table th{
+  font-weight: bold !important;
+}
+
+.report-table th, .report-table td{
+  border: 1px solid #000;
+}

@@ -1,0 +1,40 @@
+div class: 'versions-container' do
+  table do
+    thead do
+      tr do
+        td "Version ID"
+        td "Item ID"
+        td "Item Type"
+        td "Event"
+        td "Created At"
+        td "Created By"
+          resource.class.column_names.each do |key|
+            td key.titleize
+          end
+        td "Action"
+      end
+    end
+    tbody do
+      resource.versions.order(created_at: :desc).each do |version|
+        tr do
+          td version.id
+          td version.item_id
+          td version.item_type
+          td version.event
+          td format_time(version.created_at)
+          td do
+            if AdminUser.find_by_id(version.whodunnit).present?
+              link_to AdminUser.find_by_id(version.whodunnit).name, admin_admin_path(AdminUser.find_by_id(version.whodunnit).id)
+            end
+          end
+          if version.object.present?
+            resource.class.column_names.each do |key|
+              td PaperTrail.serializer.load(version.object)[key]
+            end
+            td link_to "RESTORE", reify_paper_trail_version_path(version), method: :post, class: "btn "
+          end
+        end
+      end
+    end
+  end
+end

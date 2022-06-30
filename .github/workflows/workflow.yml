@@ -1,0 +1,20 @@
+name: Deployment
+on: [push]
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Execute SSH commands on remote server
+        uses: JimCronqvist/action-ssh@master
+        with:
+          hosts: 'deploy@rorens.com'
+          privateKey: ${{ secrets.SERVER_PRIVATE_KEY }}
+          debug: true
+          command: |
+            ls
+            cd docker/loyalty-api
+            git checkout db/schema.rb Gemfile.lock
+            git pull
+            /snap/bin/docker-compose -v
+            /snap/bin/docker-compose down && /snap/bin/docker-compose up -d

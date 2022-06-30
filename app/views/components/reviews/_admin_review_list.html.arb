@@ -1,0 +1,18 @@
+resource.review = Review.new if resource.review.nil?
+div class: 'admin-reviews-container' do
+  h4 "#{resource.review.review_count} Review(s)", class: 'admin-reviews-title'
+  render 'components/reviews/star_rating', rating: resource.review.review_rating
+  br
+  br
+  resource.review.review_items.each do |review_item|
+    hr
+    div class: 'admin-review-item' do
+      div class: 'admin-review-content' do
+        para review_item.user.name, class: 'review-user-name'
+        para(format_date(review_item.created_at), class: 'review-created-at')
+        para review_item.content, class: 'review-content'
+      end
+      render 'components/reviews/star_rating', rating: review_item.rating
+    end
+  end
+end

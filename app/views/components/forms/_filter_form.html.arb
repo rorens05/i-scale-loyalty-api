@@ -1,0 +1,17 @@
+form class: 'filter-form' do
+  select class: 'particular-select', name: 'particular' do
+    option "All Particulars", value: 'all'
+    WorkingFile.particulars.keys.each do |item|
+      option item.titleize, value: item, selected: item == particular
+    end
+  end
+  select class: 'particular-select', name: 'user_id' do
+    option "All Customer", value: 'all'
+    User.all.each do |item|
+      option item.name, value: item.id, selected: item.id == user&.id
+    end
+  end
+  input type: "text", class: "daterange", name: 'date-range', value: format_daterange(start_date, end_date)
+  input type: "submit"
+  input type: "submit", class: "print-button", value: "Print", onClick: "window.print()"
+end
