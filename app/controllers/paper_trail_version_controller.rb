@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class PaperTrailVersionController < ApplicationController
-  layout :custom_layout
-  before_action :set_version, only: [:reify]
   before_action :authenticate_admin_user!, only: [:reify]
 
   def reify
