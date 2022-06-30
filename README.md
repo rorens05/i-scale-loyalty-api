@@ -61,7 +61,7 @@ In terminal, run the following command to clone the repo:
 
 ## Usage
 
-Make a POST request to `http://localhost:3000/api/orders` (or in the `https://loyalty-platform.rorens.com/api/orders`) with the following request body:
+Make a POST request to `http://localhost:3000/api/v1/orders` (or in the `https://loyalty-platform.rorens.com/api/v1/orders`) with the following request body:
 
 | Key                   | Value Description |
 | ----------------------|-------------------|
