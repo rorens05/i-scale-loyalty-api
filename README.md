@@ -81,7 +81,7 @@ Item body
 
 ### Example Request
 
-POST `http://localhost:3000/api/orders`
+POST `http://localhost:3000/api/v1/orders`
 
 Request Body:
 
