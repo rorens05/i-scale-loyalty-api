@@ -1,26 +1,28 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.2'
 
-# dot env 
-gem 'dotenv-rails', groups: [:development, :test]
+# dot env
+gem 'dotenv-rails', groups: %i[development test]
 # audit
 gem 'paper_trail'
 # what you see what you get
-gem 'activeadmin_froala_editor' 
-gem "wysiwyg-rails"
+gem 'activeadmin_froala_editor'
+gem 'wysiwyg-rails'
 
+gem 'bootstrap-daterangepicker-rails'
 gem 'geocoder'
 gem 'jquery-rails'
 gem 'momentjs-rails'
-gem 'bootstrap-daterangepicker-rails'
 # for creating beautiful charts
-gem "chartkick"
+gem 'chartkick'
 # datetime picker for active admin
 gem 'active_admin_datetimepicker'
 # Select2 for better select
-gem "select2-rails"
+gem 'select2-rails'
 # Administration Gem
 gem 'activeadmin'
 # Plus integrations with:
@@ -29,7 +31,7 @@ gem 'pundit'
 # Active admin theme
 gem 'arctic_admin'
 # renaming project
-gem "rename" 
+gem 'rename'
 # API Authorization
 gem 'bcrypt', '~> 3.1.7'
 # jwt for api token encryption
@@ -85,6 +87,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'rspec-rails', '~> 5.0.0'
+  gem 'rubocop', require: false
 end
 
 group :development do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'boot'
 
 require 'rails/all'
@@ -20,7 +22,7 @@ module MbcBackend
     end
     config.action_cable.allowed_request_origins = [%r{https?://\S+}]
     config.hosts.clear
-    
+
     config.time_zone = 'Beijing'
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

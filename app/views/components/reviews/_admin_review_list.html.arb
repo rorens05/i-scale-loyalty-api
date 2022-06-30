@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 resource.review = Review.new if resource.review.nil?
 div class: 'admin-reviews-container' do
   h4 "#{resource.review.review_count} Review(s)", class: 'admin-reviews-title'

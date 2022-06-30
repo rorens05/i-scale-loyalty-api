@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Imageable
   extend ActiveSupport::Concern
   include ImagesHelper
@@ -10,7 +12,7 @@ module Imageable
     def image_path
       return Rails.application.routes.url_helpers.rails_blob_path(image, only_path: true) if image.attached?
     end
-    
+
     def set_image
       if base_64_image.present?
         # TODO: Validates image
@@ -20,6 +22,5 @@ module Imageable
   end
 
   class_methods do
-
   end
 end

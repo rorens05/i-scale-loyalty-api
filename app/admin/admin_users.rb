@@ -1,4 +1,6 @@
-ActiveAdmin.register AdminUser, as: "Admins" do
+# frozen_string_literal: true
+
+ActiveAdmin.register AdminUser, as: 'Admins' do
   menu priority: 11
   permit_params :email, :name, :role, :status, :password, :password_confirmation, :image
 
@@ -32,8 +34,8 @@ ActiveAdmin.register AdminUser, as: "Admins" do
     f.actions
   end
 
-  show do 
-    panel "Admin Info" do
+  show do
+    panel 'Admin Info' do
       columns do
         column span: 4 do
           attributes_table_for resource do
@@ -46,11 +48,10 @@ ActiveAdmin.register AdminUser, as: "Admins" do
         end
         if resource.image.attached?
           column span: 1 do
-            image_tag resource.image.variant(resize: "300x300"), class: 'width-100'
+            image_tag resource.image.variant(resize: '300x300'), class: 'width-100'
           end
         end
       end
     end
   end
-
 end

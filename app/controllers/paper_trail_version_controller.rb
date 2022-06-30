@@ -1,5 +1,6 @@
-class PaperTrailVersionController < ApplicationController
+# frozen_string_literal: true
 
+class PaperTrailVersionController < ApplicationController
   layout :custom_layout
   before_action :set_version, only: [:reify]
   before_action :authenticate_admin_user!, only: [:reify]
@@ -9,9 +10,9 @@ class PaperTrailVersionController < ApplicationController
     redirect_to request.referer
   end
 
-  private 
+  private
+
   def set_version
     @version = PaperTrail::Version.find(params[:id])
   end
-
 end

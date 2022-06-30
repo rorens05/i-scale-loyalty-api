@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ImagesHelper
   def base64_to_file(image)
     {
