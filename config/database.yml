@@ -16,7 +16,7 @@ development:
 
 test:
   <<: *default
-  database: <%= ENV['DB_NAME'] || "loyalty_test" %>
+  database: <%= "#{ENV['DB_NAME'] || "loyalty"}_test" %>
   username: <%= ENV['DB_USER'] || "username" %>
   password: <%= ENV['DB_PASSWORD'] || "password" %>
   host:     <%= ENV['DB_HOST'] || "localhost" %>
