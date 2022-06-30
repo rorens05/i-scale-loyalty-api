@@ -13,7 +13,7 @@ jobs:
           debug: true
           command: |
             ls
-            cd docker/loyalty-api
+            cd deployed/i-scale-loyalty-api
             git checkout db/schema.rb Gemfile.lock
             git pull
             /snap/bin/docker-compose -v
