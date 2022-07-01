@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+##
+# This module is used to add default image to a model
 module Imageable
   extend ActiveSupport::Concern
   include ImagesHelper
@@ -14,10 +16,8 @@ module Imageable
     end
 
     def set_image
-      if base_64_image.present?
-        # TODO: Validates image
-        self.image = base64_to_file(base_64_image)
-      end
+      # TODO: Validates image
+      self.image = base64_to_file(base_64_image) if base_64_image.present?
     end
   end
 

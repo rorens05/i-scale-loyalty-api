@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# This module handles conversion of base64 string to a file
 module ImagesHelper
   def base64_to_file(image)
     {

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+##
+# This module is used to format status of a model
 module StatusTracking
   extend ActiveSupport::Concern
 

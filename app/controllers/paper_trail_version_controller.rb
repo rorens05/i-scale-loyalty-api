@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+##
+# This controller is used to manage PaperTrailVersion
+# Specifically for restoring versions of a model
 class PaperTrailVersionController < ApplicationController
   before_action :authenticate_admin_user!, only: [:reify]
 

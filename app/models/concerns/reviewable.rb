@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+##
+# This module is used to add reviews to a model.
 module Reviewable
   extend ActiveSupport::Concern
 

@@ -2,6 +2,8 @@
 
 module Api
   module V1
+    ##
+    # This controller handles all actions related to orders
     class OrdersController < Api::V1::ApiController
       def create
         @order = Order.new(order_params)
