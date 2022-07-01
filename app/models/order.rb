@@ -14,7 +14,6 @@ class Order < ApplicationRecord
   validate :must_have_at_least_one_order_item
 
   before_validation :find_or_create_guest
-  before_save :calculate_order
 
   def item_total
     order_items.sum { |item| item.price * item.quantity }
@@ -28,11 +27,5 @@ class Order < ApplicationRecord
 
   def find_or_create_guest
     Guest.find_or_create_by(id: guest_id) if guest_id.present?
-  end
-
-  def calculate_order
-    self.discount = Orders::DiscountService.call(self)
-    self.sub_total = item_total - discount
-    self.points = Orders::PointsService.call(self)
   end
 end

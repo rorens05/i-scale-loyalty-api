@@ -103,21 +103,21 @@ describe 'Orders', type: :request do
                              headers: { 'Content-Type' => 'application/json' }
     end
 
-    it 'Creates an order' do
+    it 'creates an order' do
       expect(Guest.count).to eq(1)
       expect(Order.count).to eq(1)
       expect(Order.first.order_items.count).to eq(2)
     end
 
-    it 'Saved 0 discount' do
+    it 'saved 0 discount' do
       expect(Order.first.discount.to_s).to eq('0.0')
     end
 
-    it 'Saved the correct subtotal' do
+    it 'saved the correct subtotal' do
       expect(Order.first.sub_total.to_s).to eq('3.0')
     end
 
-    it 'Saved the correct points' do
+    it 'saved the correct points' do
       expect(Order.first.points.to_s).to eq('6.0')
     end
 
@@ -132,21 +132,21 @@ describe 'Orders', type: :request do
                              headers: { 'Content-Type' => 'application/json' }
     end
 
-    it 'Creates an order' do
+    it 'creates an order' do
       expect(Guest.count).to eq(1)
       expect(Order.count).to eq(1)
       expect(Order.first.order_items.count).to eq(3)
     end
 
-    it 'Saved the correct discount' do
+    it 'saved the correct discount' do
       expect(Order.first.discount.to_s).to eq('3.0')
     end
 
-    it 'Saved the correct subtotal' do
+    it 'saved the correct subtotal' do
       expect(Order.first.sub_total.to_s).to eq('12.0')
     end
 
-    it 'Saved the correct points' do
+    it 'saved the correct points' do
       expect(Order.first.points.to_s).to eq('24.0')
     end
 
@@ -161,21 +161,21 @@ describe 'Orders', type: :request do
                              headers: { 'Content-Type' => 'application/json' }
     end
 
-    it 'Creates an order' do
+    it 'creates an order' do
       expect(Guest.count).to eq(1)
       expect(Order.count).to eq(1)
       expect(Order.first.order_items.count).to eq(2)
     end
 
-    it 'Saved the correct discount' do
+    it 'saved the correct discount' do
       expect(Order.first.discount.to_s).to eq('2.0')
     end
 
-    it 'Saved the correct subtotal' do
+    it 'saved the correct subtotal' do
       expect(Order.first.sub_total.to_s).to eq('4.0')
     end
 
-    it 'Saved the correct points' do
+    it 'saved the correct points' do
       expect(Order.first.points.to_s).to eq('8.0')
     end
 
@@ -190,21 +190,21 @@ describe 'Orders', type: :request do
                              headers: { 'Content-Type' => 'application/json' }
     end
 
-    it 'Creates an order' do
+    it 'creates an order' do
       expect(Guest.count).to eq(1)
       expect(Order.count).to eq(1)
       expect(Order.first.order_items.count).to eq(3)
     end
 
-    it 'Saved the correct discount' do
+    it 'saved the correct discount' do
       expect(Order.first.discount.to_s).to eq('2.2')
     end
 
-    it 'Saved the correct subtotal' do
+    it 'saved the correct subtotal' do
       expect(Order.first.sub_total.to_s).to eq('8.8')
     end
 
-    it 'Saved the correct points ' do
+    it 'saved the correct points ' do
       expect(Order.first.points.to_s).to eq('17.0')
     end
 
