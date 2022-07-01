@@ -25,7 +25,7 @@ class Order < ApplicationRecord
   end
 
   def calculate_discount
-    self.discount = Orders::DiscountCalculator.call(self)
+    self.discount = Orders::DiscountService.call(self)
   end
 
   def calculate_sub_total
@@ -33,6 +33,6 @@ class Order < ApplicationRecord
   end
 
   def calculate_points
-    self.points = Orders::PointsCalculator.call(self)
+    self.points = Orders::PointsService.call(self)
   end
 end

@@ -8,7 +8,7 @@ module Orders
   # - Points must be floor value, will be rounded down to nearest integer
   # Recommendation for improvement
   # - store the list of points multiplier in the database
-  class PointsCalculator < ApplicationService
+  class PointsService < ApplicationService
     POINTS_MULTIPLIER = 2
 
     def initialize(order)

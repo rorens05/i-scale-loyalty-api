@@ -11,7 +11,7 @@ module Orders
   # Recommendation for improvement
   # - store the list discount rate with the minimum amount for discount in the database
   # - store the list of SKU that are discounted in the database
-  class DiscountCalculator < ApplicationService
+  class DiscountService < ApplicationService
     MINIMUM_AMOUNT_FOR_DISCOUNT = 10
     DISCOUNT_RATE = 0.2
 
