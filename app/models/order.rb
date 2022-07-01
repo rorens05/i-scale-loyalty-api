@@ -14,11 +14,9 @@ class Order < ApplicationRecord
 
   before_save :calculate_discount, :calculate_sub_total, :calculate_points
 
-  MINIMUM_AMOUNT_FOR_DISCOUNT = 10
-  DISCOUNT = 0.2
-  DISCOUNTED_SKU = 'CCC'
-  DISCOUNTED_SKU_AMOUNT = 2
-  POINTS_MULTIPLIER = 2
+  def item_total
+    order_items.sum { |item| item.price * item.quantity }
+  end
 
   private
 
@@ -26,26 +24,8 @@ class Order < ApplicationRecord
     errors.add(:order_items, 'must have at least one order item') if order_items.empty?
   end
 
-  def item_total
-    order_items.sum { |item| item.price * item.quantity }
-  end
-
-  def item_total_discount
-    item_total * DISCOUNT
-  end
-
   def calculate_discount
-    sku_discount = discounted_by_sku? ? DISCOUNTED_SKU_AMOUNT : 0
-    percentage_discount = discounted_by_amount? ? item_total_discount : 0
-    self.discount = sku_discount > percentage_discount ? sku_discount : percentage_discount
-  end
-
-  def discounted_by_sku?
-    order_items.any? { |item| item.sku == DISCOUNTED_SKU }
-  end
-
-  def discounted_by_amount?
-    item_total > MINIMUM_AMOUNT_FOR_DISCOUNT
+    self.discount = Orders::DiscountCalculator.call(self)
   end
 
   def calculate_sub_total
@@ -53,6 +33,6 @@ class Order < ApplicationRecord
   end
 
   def calculate_points
-    self.points = (sub_total * POINTS_MULTIPLIER).floor
+    self.points = Orders::PointsCalculator.call(self)
   end
 end
