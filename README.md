@@ -66,8 +66,8 @@ Make a POST request to `http://localhost:3000/api/v1/orders` (or in the `https:/
 | Key                   | Value Description |
 | ----------------------|-------------------|
 | timestamp             | Required.         |
-| store_id              | Required          |
-| guest_id              | Required          |
+| store_id              | Required.          |
+| guest_id              | Required, will create a new guest with guest id if the quest does not exist        |
 | transaction_id        | Required, unique  |
 | items                 | Required at least one item   |
 
@@ -106,14 +106,14 @@ Request Body:
 }
 ```
 
-If successful, the response body will be a JSON 
+If successful, the response body will be a JSON. the response will contain the guest first and last name if it exist
 
 ```json
 {
   "subtotal": "1.0",
   "discount": "2.0",
   "points": "2.0",
-  "message": "Thank you, GuestFirstName, GuestLastName!"
+  "message": "Thank you, Guest!"
 }
 ```
 

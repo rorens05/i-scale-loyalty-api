@@ -24,7 +24,7 @@ module Orders
     end
 
     def call
-      sku_discount > percentage_discount ? sku_discount : percentage_discount
+      (sku_discount > percentage_discount ? sku_discount : percentage_discount)
     end
 
     private

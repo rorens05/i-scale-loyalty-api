@@ -4,7 +4,7 @@ class CreateOrders < ActiveRecord::Migration[6.0]
   def change
     create_table :orders do |t|
       t.string :transaction_id, null: false
-      t.string :store_id, null: false
+      t.references :store, type: :string
       t.string :guest_id, null: false
       t.datetime :timestamp, null: false
       t.decimal :discount, default: 0, precision: 10, scale: 2

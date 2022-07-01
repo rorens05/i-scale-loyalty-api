@@ -11,8 +11,7 @@ module Api
         if @order.save
           render json: { subtotal: @order.sub_total, discount: @order.discount,
                          points: @order.points,
-                         message: 'Thank you, GuestFirstName, GuestLastName!' },
-                 status: :created
+                         message: "Thank you, #{@order.guest.name}!" }, status: :created
         else
           render json: @order.errors, status: :unprocessable_entity
         end

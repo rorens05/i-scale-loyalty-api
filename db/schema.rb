@@ -37,6 +37,14 @@ ActiveRecord::Schema.define(version: 20_220_630_082_712) do
     t.index ['key'], name: 'index_active_storage_blobs_on_key', unique: true
   end
 
+  create_table 'guests', id: :string, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci',
+                         force: :cascade do |t|
+    t.string 'first_name'
+    t.string 'last_name'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+  end
+
   create_table 'order_items', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci',
                               force: :cascade do |t|
     t.bigint 'order_id', null: false
@@ -51,7 +59,7 @@ ActiveRecord::Schema.define(version: 20_220_630_082_712) do
   create_table 'orders', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci',
                          force: :cascade do |t|
     t.string 'transaction_id', null: false
-    t.string 'store_id', null: false
+    t.string 'store_id'
     t.string 'guest_id', null: false
     t.datetime 'timestamp', null: false
     t.decimal 'discount', precision: 10, scale: 2, default: '0.0'
@@ -59,6 +67,7 @@ ActiveRecord::Schema.define(version: 20_220_630_082_712) do
     t.decimal 'points', precision: 10, scale: 2, default: '0.0'
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
+    t.index ['store_id'], name: 'index_orders_on_store_id'
   end
 
   add_foreign_key 'active_storage_attachments', 'active_storage_blobs', column: 'blob_id'

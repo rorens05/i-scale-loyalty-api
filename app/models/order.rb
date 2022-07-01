@@ -4,6 +4,7 @@
 # This class is used to represent an order.
 class Order < ApplicationRecord
   has_many :order_items, dependent: :destroy
+  belongs_to :guest
   accepts_nested_attributes_for :order_items
 
   validates :transaction_id, presence: true, uniqueness: { case_sensitive: true }
@@ -12,7 +13,8 @@ class Order < ApplicationRecord
   validates :timestamp, presence: true
   validate :must_have_at_least_one_order_item
 
-  before_save :calculate_discount, :calculate_sub_total, :calculate_points
+  before_validation :find_or_create_guest
+  before_save :calculate_order
 
   def item_total
     order_items.sum { |item| item.price * item.quantity }
@@ -24,15 +26,13 @@ class Order < ApplicationRecord
     errors.add(:order_items, 'must have at least one order item') if order_items.empty?
   end
 
-  def calculate_discount
+  def find_or_create_guest
+    Guest.find_or_create_by(id: guest_id) if guest_id.present?
+  end
+
+  def calculate_order
     self.discount = Orders::DiscountService.call(self)
-  end
-
-  def calculate_sub_total
     self.sub_total = item_total - discount
-  end
-
-  def calculate_points
     self.points = Orders::PointsService.call(self)
   end
 end
